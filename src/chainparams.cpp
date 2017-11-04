@@ -195,7 +195,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0x8b3aa1f1d87b9533d9d36b63875c0c97d833cd5cd8585c05030783a515a3345b"))
+            (  0, uint256S("0x6e6c24041f16402a30d35bb8ad14e8a5953ad8e4ebb7a126fc23e0591d80b2e1"))
         };
 
         chainTxData = ChainTxData{
@@ -271,8 +271,8 @@ public:
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
         vSeeds.push_back(CDNSSeedData("dns001", "qat001.bitchk.com",true));
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,59);//Q
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,121);//q
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);//Q
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122);//q
         
         
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
@@ -288,7 +288,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0xf47f333675ef7872069b81c29eb84003174ea12a42db657dd133c4ca8d9d6b80"))
+            (  0, uint256S("0x38a1001d142f3a3504902635e166fcf1f51607a8ad1a4cf4cd9b5c84d9a03138"))
         };
 
         chainTxData = ChainTxData{
@@ -367,7 +367,7 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            ( 0, uint256S("0x059fe092401d4bde9b38de8ee3b92c3352bec2ab055d66f0b9fb418a101d2efd"))
+            ( 0, uint256S("0xd7ebc3e0f9b7f18f04ab277889d1fa12839aa40358d1a5b61bb04646d9e77e4f"))
         };
 
         chainTxData = ChainTxData{
@@ -376,8 +376,8 @@ public:
             0
         };
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,59);//Q
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,121);//q
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);//Q
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,122);//q
         
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
