@@ -20,41 +20,7 @@
 
 bool fSearchGenesis = true;
 
-void searchGenesis(CBlock genesis){
-    printf("Start Search Genesis\n");
-    arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
-    unsigned int startTime =  genesis.nTime;
-    unsigned int startNonce =  genesis.nNonce;
-    
-    uint256 thash;
-    while(true){
-        thash = genesis.GetPoWHash();
-        
-        if(UintToArith256(thash)<hashTarget){
-            printf("found...\n");
-            break;
-        }
-        if(genesis.nNonce%5000==0){
-            printf("nonce %08X: hash = %s (target = %s)\n", genesis.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
-    
-        }
-        ++genesis.nNonce;
-        if (genesis.nNonce == 0)
-        {
-            printf("NONCE WRAPPED, incrementing time\n");
-            ++genesis.nTime;
-        }
-    }
-    
-    printf(" start block.nTime = %u \n",startTime );
-    printf(" start block.nNonce = %u \n", startNonce);
-    printf("block.nTime = %u \n", genesis.nTime);
-    printf("block.nNonce = %u \n", genesis.nNonce);
-    printf("block.GetHash = 0x%s\n", genesis.GetHash().ToString().c_str());
-    printf("block.PoWHash = 0x%s\n", genesis.GetPoWHash().ToString().c_str());
-    printf("block.hashMerkleRoot = 0x%s\n",   genesis.hashMerkleRoot.ToString().c_str());
-    exit(0);
-}
+
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     CMutableTransaction txNew;
@@ -161,10 +127,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         uint256 hashGenesis = uint256S("0x6e6c24041f16402a30d35bb8ad14e8a5953ad8e4ebb7a126fc23e0591d80b2e1");
         uint256 hashMerkelRoot = uint256S("0x7cb1e78604f91451f6b77a2eb822f48576527cbcb94c9e300f0f715c9131f196");
-        if(hashGenesis !=genesis.GetHash()){
-            genesis.nNonce = 0;
-            searchGenesis(genesis);
-        }
+        
         assert(consensus.hashGenesisBlock == hashGenesis);
         assert(genesis.hashMerkleRoot == hashMerkelRoot);
 
@@ -255,10 +218,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         uint256 hashGenesis = uint256S("0x38a1001d142f3a3504902635e166fcf1f51607a8ad1a4cf4cd9b5c84d9a03138");
         uint256 hashMerkelRoot = uint256S("0x6ae4a1bebe04b0b834abb175fb19e384903c28fc0ee2437811f95fd5a26a48d8");
-        if(hashGenesis !=genesis.GetHash()){
-            genesis.nNonce = 0;
-            searchGenesis(genesis);
-        }
+        
         assert(consensus.hashGenesisBlock == hashGenesis);
         assert(genesis.hashMerkleRoot == hashMerkelRoot);
 
@@ -345,10 +305,7 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
         uint256 hashGenesis = uint256S("0xd7ebc3e0f9b7f18f04ab277889d1fa12839aa40358d1a5b61bb04646d9e77e4f");
         uint256 hashMerkelRoot = uint256S("0x261792f5ea3fd747aa41226df9eab06cdb2d08cc1c796fbb9a1838948dff69f8");
-        if(hashGenesis !=genesis.GetHash()){
-            genesis.nNonce = 0;
-            searchGenesis(genesis);
-        }
+        
         assert(consensus.hashGenesisBlock == hashGenesis);
         assert(genesis.hashMerkleRoot == hashMerkelRoot);
 
