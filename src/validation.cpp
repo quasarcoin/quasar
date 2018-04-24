@@ -1230,12 +1230,14 @@ CAmount GetBlockSubsidy(const CBlockIndex * pindexPrev , const Consensus::Params
     CAmount nSubsidy  = 0;
     
     
-    if(pindexPrev==NULL )
+    if(pindexPrev==NULL ){ 
         nSubsidy = BLOCK_REWARD_COIN;
-    else if(pindexPrev->nHeight <BLOCK_HEIGHT_INIT){
+    }else if(pindexPrev->nHeight <BLOCK_HEIGHT_INIT){
         nSubsidy = PREMINE_MONEY_COIN / BLOCK_HEIGHT_INIT; // 
-    }else{
+    }else if(pindexPrev->nHeight <BLOCK_TIME_100){ // block reward  subside
         nSubsidy = BLOCK_REWARD_COIN; //
+    }else{
+        nSubsidy = BLOCK_REWARD_COIN_100; //
     }
     //limit of reward
     if (pindexPrev != NULL && (pindexPrev->nMoneySupply + nSubsidy) >= MAX_MONEY) {
